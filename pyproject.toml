@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "homematic-exporter"
+version = "0.0.0"
+description = "Prometheus Exporter for HomeMatic CCU2/3"
+authors = ["Your Name <you@example.com>"]
+license = "Apache 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+prometheus-client = "^0.19.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
