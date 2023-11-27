@@ -376,8 +376,7 @@ def start_http_server(port, addr='', registry=core.REGISTRY):
     thread.start()
 
 
-if __name__ == '__main__':
-
+def main():
     PARSER = argparse.ArgumentParser()
     PARSER.add_argument("--ccu_host", help="The hostname of the ccu instance", required=True)
     PARSER.add_argument("--ccu_port", help="The port for the xmlrpc service (2001 for BidcosRF, 2010 for HmIP)", default=2010)
