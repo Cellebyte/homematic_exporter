@@ -133,6 +133,19 @@ files = [
 ]
 
 [[package]]
+name = "dacite"
+version = "1.8.1"
+description = "Simple creation of data classes from dictionaries."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "dacite-1.8.1-py3-none-any.whl", hash = "sha256:cc31ad6fdea1f49962ea42db9421772afe01ac5442380d9a99fcf3d188c61afe"},
+]
+
+[package.extras]
+dev = ["black", "coveralls", "mypy", "pre-commit", "pylint", "pytest (>=5)", "pytest-benchmark", "pytest-cov"]
+
+[[package]]
 name = "dill"
 version = "0.3.7"
 description = "serialize all of Python"
@@ -175,6 +188,17 @@ plugins = ["setuptools"]
 requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
+name = "json-fix"
+version = "0.5.2"
+description = "allow custom class json behavior on builtin json object"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "json_fix-0.5.2-py3-none-any.whl", hash = "sha256:5e65c8fd5fc674dd7141374968175c660d1af20481ca0d936a16a1633377a583"},
+    {file = "json_fix-0.5.2.tar.gz", hash = "sha256:6d85ba545622603e2662afbd5cdb3b4af1f2992aa473b76cf58d7ed768e0efc8"},
+]
+
+[[package]]
 name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
@@ -213,6 +237,26 @@ files = [
 
 [package.extras]
 twisted = ["twisted"]
+
+[[package]]
+name = "pyccu3"
+version = "0.0.2"
+description = ""
+optional = false
+python-versions = ">=3.11,<4.0"
+files = [
+    {file = "pyccu3-0.0.2.tar.gz", hash = "sha256:20d2250019a66e19816b5547463208fa10c0148545d86f5fdff8494479c5ef39"},
+]
+
+[package.dependencies]
+dacite = ">=1.8.1,<2.0.0"
+json-fix = ">=0.5.2,<0.6.0"
+requests = ">=2.31.0,<3.0.0"
+xmltodict = ">=0.13.0,<0.14.0"
+
+[package.source]
+type = "file"
+url = "pyccu3-0.0.2.tar.gz"
 
 [[package]]
 name = "pylint"
@@ -289,7 +333,18 @@ brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
+[[package]]
+name = "xmltodict"
+version = "0.13.0"
+description = "Makes working with XML feel like you are working with JSON"
+optional = false
+python-versions = ">=3.4"
+files = [
+    {file = "xmltodict-0.13.0-py2.py3-none-any.whl", hash = "sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852"},
+    {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "513ebb1fa2e3fa74cc6a3a7ffcef1494d32edefe58d2280b551dd85118ca029a"
+content-hash = "8a0866092e983db50bc5b284c82db8fe84c4fe3793fcc570fec9d6f120de2f2e"
