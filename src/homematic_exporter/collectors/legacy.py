@@ -169,7 +169,7 @@ class HomeMaticLegacyCollector(Collector):
         if value == "" or value is None:
             return
         gaugename = key.lower()
-        if not gaugename in self.metrics:
+        if gaugename not in self.metrics:
             self.metrics[gaugename] = GaugeMetricFamily(
                 f"{self.namespace}_{gaugename}",
                 "Metrics for " + key,
@@ -203,7 +203,7 @@ class HomeMaticLegacyCollector(Collector):
         self.logger.debug(
             "Found enum param {} with value {}, gauge {}".format(key, value, gaugename)
         )
-        if not gaugename in self.metrics:
+        if gaugename not in self.metrics:
             self.metrics[gaugename] = GaugeMetricFamily(
                 f"{self.namespace}_{gaugename}",
                 "Metrics for " + key,
