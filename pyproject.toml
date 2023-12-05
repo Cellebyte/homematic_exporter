@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "homematic-exporter"
-version = "0.0.0"
+version = "0.0.1"
 description = "Prometheus Exporter for HomeMatic CCU2/3"
 authors = ["Your Name <you@example.com>"]
 license = "Apache 2.0"
