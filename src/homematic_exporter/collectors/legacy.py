@@ -194,14 +194,12 @@ class HomeMaticLegacyCollector(Collector):
 
     def process_enum(self, device: HomeMaticRPCDevice, key, value, istates):
         if value == "" or value is None:
-            self.logger.debug(
-                "Skipping processing enum {} with empty value".format(key)
-            )
+            self.logger.debug(f"Skipping processing enum {key} with empty value")
             return
 
         gaugename = key.lower() + "_set"
         self.logger.debug(
-            "Found enum param {} with value {}, gauge {}".format(key, value, gaugename)
+            f"Found enum param {key} with value {value}, gauge {gaugename}"
         )
         if gaugename not in self.metrics:
             self.metrics[gaugename] = GaugeMetricFamily(
