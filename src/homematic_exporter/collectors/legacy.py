@@ -1,14 +1,16 @@
+import json
+import logging
+import xmlrpc
+from pprint import pformat
+from typing import Dict, Iterable, Optional
+
 from prometheus_client.core import GaugeMetricFamily, Metric
 from prometheus_client.registry import Collector
-from typing import Iterable, Optional, Dict
-import logging
 from pyccu3 import PyCCU3Legacy
-import json
-from pprint import pformat
-from homematic_exporter.cache import ttl_lru_cache
-import xmlrpc
+from pyccu3.constants import CHANNELS_WITH_ERRORS_ALLOWED, SUPPORTED_DEVICE_TYPES
 from pyccu3.objects.legacy import HomeMaticRPCDevice
-from pyccu3.constants import SUPPORTED_DEVICE_TYPES, CHANNELS_WITH_ERRORS_ALLOWED
+
+from homematic_exporter.cache import ttl_lru_cache
 
 
 class HomeMaticLegacyCollector(Collector):

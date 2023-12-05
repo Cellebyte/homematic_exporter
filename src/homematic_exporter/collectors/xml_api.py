@@ -1,10 +1,16 @@
-from typing import Iterable, Tuple, Optional, Union, Dict
-from prometheus_client.core import GaugeMetricFamily, CounterMetricFamily, Metric
-from prometheus_client.registry import Collector
-from homematic_exporter.cache import ttl_lru_cache
-from pyccu3 import PyCCU3
-from pyccu3.enums import DataPointType, DataPointUnit, BOOLEAN
 import logging
+from typing import Dict, Iterable, Optional, Tuple, Union
+
+from prometheus_client.core import (  # ignore
+    CounterMetricFamily,
+    GaugeMetricFamily,
+    Metric,
+)
+from prometheus_client.registry import Collector
+from pyccu3 import PyCCU3
+from pyccu3.enums import BOOLEAN, DataPointType, DataPointUnit
+
+from homematic_exporter.cache import ttl_lru_cache
 
 
 def floatify(value: Union[int, float, BOOLEAN]) -> float:

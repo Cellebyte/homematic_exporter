@@ -2,16 +2,16 @@
 
 import argparse
 import logging
-import time
 import threading
-
-from socketserver import ThreadingMixIn
 from http.server import HTTPServer
 from pprint import pformat
-from prometheus_client.core import REGISTRY
+from socketserver import ThreadingMixIn
+
 from prometheus_client import MetricsHandler
+from prometheus_client.core import REGISTRY
+from pyccu3 import PyCCU3Legacy  #
+
 from homematic_exporter.collectors.legacy import HomeMaticLegacyCollector
-from pyccu3 import PyCCU3Legacy
 from homematic_exporter.collectors.xml_api import HomeMaticCollector
 
 
