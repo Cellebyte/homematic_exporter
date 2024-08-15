@@ -10,7 +10,7 @@ readme = "README.md"
 python = "^3.11"
 prometheus-client = "^0.19.0"
 requests = "^2.31.0"
-pyccu3 = "^0.0.2"
+pyccu3 = "^0.0.3"
 
 
 [tool.poetry.group.dev.dependencies]
