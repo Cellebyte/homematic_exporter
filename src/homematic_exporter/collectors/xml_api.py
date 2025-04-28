@@ -178,7 +178,7 @@ class HomeMaticCollector(Collector):
                                 labels=(base_labels + [direction]),
                                 value=floatify(datapoint.value),
                             )
-                        case DataPointType.ACTUAL_TEMPERATURE:
+                        case DataPointType.ACTUAL_TEMPERATURE | DataPointType.TEMPERATURE:
                             metrics["temperature"].add_metric(
                                 labels=base_labels, value=floatify(datapoint.value)
                             )
