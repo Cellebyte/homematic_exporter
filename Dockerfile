@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM docker.io/library/python:3.11-bookworm as build
+FROM --platform=$BUILDPLATFORM docker.io/library/python:3.13-bookworm as build
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 WORKDIR /workspace
