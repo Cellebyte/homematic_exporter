@@ -1,6 +1,4 @@
-FROM --platform=$BUILDPLATFORM docker.io/library/python:3.13-bookworm as build
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
+FROM docker.io/library/python:3.13-bookworm as build
 WORKDIR /workspace
 COPY . . 
 RUN pip3 install poetry poetry-plugin-export
