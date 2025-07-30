@@ -1,3 +1,4 @@
+from ipaddress import IPv4Address, IPv6Address
 import logging
 from typing import Dict, Iterable, Optional, Tuple, Union
 
@@ -8,18 +9,19 @@ from prometheus_client.core import (  # ignore
 )
 from prometheus_client.registry import Collector
 from pyccu3 import PyCCU3
+from pyccu3.objects.xml_api import PartyDate
 from pyccu3.enums import BOOLEAN, DataPointType, DataPointUnit
 
 from homematic_exporter.cache import ttl_lru_cache
 
 
-def floatify(value: Union[int, float, BOOLEAN]) -> float:
+def floatify(value: Union[float, BOOLEAN, IPv6Address, IPv4Address, PartyDate]) -> float:
     match value:
+        case int() | float():
+            return float(value)
         case BOOLEAN.TRUE:
             return float(1.0)
-        case BOOLEAN.FALSE:
-            return float(0.0)
-    return float(value)
+    return float(0.0)
 
 
 class HomeMaticCollector(Collector):
@@ -32,6 +34,7 @@ class HomeMaticCollector(Collector):
         verify: bool = True,
     ):
         self.host = host
+        assert len(auth) > 2, "Please provide a valid session_id"
         self.client = PyCCU3(self.host, session_id=auth[1], verify=verify)
         self.logger = logging.getLogger(self.__class__.__name__)
 
@@ -186,7 +189,7 @@ class HomeMaticCollector(Collector):
                             value = datapoint.value
                             match datapoint.valueunit:
                                 case DataPointUnit.DECIMAL_PERCENT:
-                                    value = value / 100
+                                    value = floatify(value) / 100
                             metrics["humidity"].add_metric(
                                 labels=base_labels, value=floatify(value)
                             )
@@ -211,9 +214,9 @@ class HomeMaticCollector(Collector):
                             value = datapoint.value
                             match datapoint.valueunit:
                                 case DataPointUnit.WATT_HOUR:
-                                    value = value * 3600
+                                    value = floatify(value) * 3600
                                 case DataPointUnit.WATT:
-                                    value = value * 1
+                                    value = floatify(value) * 1
                             metrics["energy"].add_metric(
                                 labels=base_labels, value=floatify(value)
                             )
@@ -221,7 +224,7 @@ class HomeMaticCollector(Collector):
                             value = datapoint.value
                             match datapoint.valueunit:
                                 case DataPointUnit.MILLI_AMPERE:
-                                    value = value / 1000
+                                    value = floatify(value) / 1000
                             metrics["current"].add_metric(
                                 labels=base_labels, value=floatify(value)
                             )
