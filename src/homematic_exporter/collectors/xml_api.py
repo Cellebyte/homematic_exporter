@@ -34,7 +34,7 @@ class HomeMaticCollector(Collector):
         verify: bool = True,
     ):
         self.host = host
-        assert len(auth) > 2, "Please provide a valid session_id"
+        assert len(auth) == 2, "Please provide a valid session_id"
         self.client = PyCCU3(self.host, session_id=auth[1], verify=verify)
         self.logger = logging.getLogger(self.__class__.__name__)
 
